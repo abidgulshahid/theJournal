@@ -6,7 +6,7 @@
       class="text-caption text-disabled"
       style="position: absolute; right: 16px;"
     >
-      &copy; 2016-{{ (new Date()).getFullYear() }} <span class="d-none d-sm-inline-block">Homepage</span>
+      &copy; 2016-{{ (new Date()).getFullYear() }} <span class="d-none d-sm-inline-block">The Journal</span>
       —
       <a
         class="text-decoration-none on-surface"
