@@ -3,7 +3,7 @@
     <v-row no-gutters class=" justify-center">
       <v-col cols="12" md="6" class=" justify-center">
         <v-card class="pa-4 mx-auto mt-5" max-width="580">
-          <v-card-title>Welcome, {{ user }}</v-card-title>
+          <v-card-title>Welcome, {{ user }} , Total Entries: {{ total_entries }}</v-card-title>
           <v-textarea 
             v-model="journalText" 
             label="Share you're thoughts" 
@@ -109,6 +109,7 @@ const user = computed(() => localStorage.getItem('username'))
 const access_token = computed(() => localStorage.getItem('access_token'))
 
 const journalText = ref('')
+const total_entries = ref('')
 const showSnackbar = ref(false)
 const successMessage = ref('')
 const snackbarTimeout = 2000 // Snackbar will be visible for 2 seconds
@@ -134,6 +135,7 @@ const submitJournalEntry = async () => {
 const listJournal = async () => {
   const response = await authStore.list(access_token.value)
   if (response.data.text) {
+    total_entries.value = response.data.total_entries
     journalEntries.value = response.data.text.sort((a, b) => new Date(b.date) - new Date(a.date))
   }
 }
