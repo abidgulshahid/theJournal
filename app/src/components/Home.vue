@@ -94,16 +94,12 @@
 </template>
 
     </v-list-item>
-
-    
   </v-card>
-
 
   </v-container>
 </template>
  <script setup>
 import { ref, computed } from 'vue'
-import axios from 'axios'
 import { useAuthStore } from '@/stores/auth'
 
 const authStore = useAuthStore()
@@ -111,16 +107,11 @@ const authStore = useAuthStore()
 // Get user data from localStorage
 const user = computed(() => localStorage.getItem('username'))
 const access_token = computed(() => localStorage.getItem('access_token'))
-const full_name = computed(() => localStorage.getItem('full_name'))
-const email = computed(() => localStorage.getItem('email'))
-const location = computed(() => localStorage.getItem('location'))
 
 const journalText = ref('')
 const showSnackbar = ref(false)
 const successMessage = ref('')
 const snackbarTimeout = 2000 // Snackbar will be visible for 2 seconds
-const text_standard = ref('')
-const readability = ref('')
 
 const journalEntries = ref([]) // Reactive variable to store journal entries
 
