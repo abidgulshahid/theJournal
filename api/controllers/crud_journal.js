@@ -13,7 +13,6 @@ exports.add = async (req, res) => {
       const userId = decoded.userId
 
       const user = await User.findById( userId )
-      const data = ''
 
       if (!text || text == "") {
         return res.status(400).json({message: "Empty Thoughts cannot be submitted!."})
@@ -29,7 +28,6 @@ exports.add = async (req, res) => {
 
       try {
         // Getting General Statistics
-        console.log("Getting General Statistics")
         const response = await axios.post(
             'https://api.sapling.ai/api/v1/statistics',
             {
@@ -37,11 +35,9 @@ exports.add = async (req, res) => {
                 text,
             },
         );
-        console.log(response.data, 'data')
 
         // Getting Sentence Tone
 
-        console.log("Getting Sentence Tone ")
 
         const tone = await axios.post(
           'https://api.sapling.ai/api/v1/tone',
@@ -82,8 +78,6 @@ exports.add = async (req, res) => {
        });
 
         }
-        console.log({status});
-        console.log(JSON.stringify(data, null, 4));
     } catch (err) {
         const { msg } = err.response.data;
         console.log({err: msg});
@@ -91,62 +85,6 @@ exports.add = async (req, res) => {
     }
 
 
-
-      // End of External Service
-
-
-  
-    
-    } catch (error) {
-      console.log(error.message);
-      return res.status(500).json({ message: "Error during login" });
-    }
-  };
-  
-exports.list_journel = async (req, res) => {
-    try {
-    const { access_token } = req.body
-    
-      const decoded = jwt.decode(access_token);
-      const customer_id = decoded.userId
-      const user = await User.findById( customer_id )
-
-  
-      if (!user) {
-        return res.status(401).json({ message: "Invalid Access Token" });
-      }
-    
-
-      const get_journal = await Journal.find({userID:customer_id})
-      console.log(get_journal, 'get')
-  
-      return res
-        .status(200)
-        .json({ 
-            "text": get_journal, 
-            'message': 'Login Successfully'
-         });
-    } catch (error) {
-      console.log(error.message);
-      return res.status(500).json({ message: "Error during login" });
-    }
-  };
-
-  exports.delete_entry = async (req, res) => {
-    try {
-      const id = req.body
-
-      if (!id) {
-        return res.status(200).json({'message': "ID not Found" })
-      }
-  
-      const get_journal = await Journal.findByIdAndDelete(id.id)
-  
-      return res
-        .status(200)
-        .json({ 
-            'message': 'Deleted Successfully'
-         });
     } catch (error) {
       console.log(error.message);
       return res.status(500).json({ message: "Error during login" });
