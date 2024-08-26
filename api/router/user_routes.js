@@ -4,7 +4,9 @@ const { login } = require('../controllers/user_login');
 const { logout } = require('../controllers/user_logout');
 const {verifyToken} = require("../middleware/verifyToken")
 const {home_api} = require("../controllers/home_api");
-const {add, list_journel, delete_entry} = require("../controllers/crud_journal");
+const {add} = require("../controllers/crud_journal");
+const {list_journel} = require('../controllers/list_journal');
+const {delete_entry} = require("../controllers/delete_journal");
 const {decrypt_password} = require("../controllers/decrypter");
 const {updateProfile} = require("../controllers/update_profile");
 
