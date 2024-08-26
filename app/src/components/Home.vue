@@ -1,8 +1,8 @@
 <template>
-  <v-container>
+  <v-container >
     <v-row no-gutters class=" justify-center">
       <v-col cols="12" md="6" class=" justify-center">
-        <v-card class="pa-4">
+        <v-card class="pa-4 mx-auto mt-5" max-width="580">
           <v-card-title>Welcome, {{ user }}</v-card-title>
           <v-textarea 
             v-model="journalText" 
