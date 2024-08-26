@@ -37,6 +37,7 @@ exports.add = async (req, res) => {
                 text,
             },
         );
+        console.log(response.data, 'data')
 
         // Getting Sentence Tone
 
@@ -49,7 +50,6 @@ exports.add = async (req, res) => {
               text,
           },
       );
-      console.log(tone.data.overall, 'tone ')
         overall = tone.data.overall[0][2]
 
 
