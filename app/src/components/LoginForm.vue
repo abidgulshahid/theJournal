@@ -22,7 +22,7 @@
       </v-card-text>
       <v-card-actions class="justify-center">
         <center>
-        <v-btn style="background-color: black; color: white; padding: 1%; text-align: center; width: 150px;" @click="login">Login</v-btn>
+        <v-btn :disabled="!passwordsMatch"  style="background-color: black; color: white; padding: 1%; text-align: center; width: 150px;" @click="login">Login</v-btn>
       </center>
       </v-card-actions>
       <v-card-subtitle class="text-center">
@@ -67,6 +67,13 @@ const login = async () => {
     
   }
 }
+
+
+const passwordsMatch = computed(() => {
+   if (password.value != '') {
+    return true
+   }
+})
 </script>
 
 <style scoped>
