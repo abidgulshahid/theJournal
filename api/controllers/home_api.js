@@ -11,8 +11,6 @@ exports.home_api = async (req, res) => {
       const userId = decoded.userId
       const user = await User.findById( userId )
 
-      console.log(user, 'user')
-
   
       if (!user) {
         return res.status(401).json({ message: "Invalid Access Token" });
