@@ -16,13 +16,13 @@ exports.list_journel = async (req, res) => {
       }
     
 
-      const get_journal = await Journal.find({userID:customer_id})
+      const get_journal = (await Journal.find({userID:customer_id}))
   
       return res
         .status(200)
         .json({ 
             "text": get_journal, 
-            'message': 'Login Successfully'
+            'total_entries': get_journal.length || 0
          });
     } catch (error) {
       console.log(error.message);
