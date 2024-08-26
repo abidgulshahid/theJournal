@@ -7,7 +7,7 @@
       <v-spacer></v-spacer>
 
       <div v-if="access_token || isLoggedIn">
-        <v-btn text to="/homepage">Home</v-btn>
+        <v-btn text to="/homepage">Home {{ total_entries || 5 }}</v-btn>
         <v-btn text to="/profile">Profile</v-btn>
         <v-btn @click="logout">Logout</v-btn>
       </div>
