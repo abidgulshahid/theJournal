@@ -39,7 +39,7 @@
         </v-form>
       </v-card-text>
       <v-card-actions class="justify-center">
-        <v-btn style="background-color: black; color: white; padding: 1%; text-align: center; width: 150px;" @click="signup">Sign Up</v-btn>
+        <v-btn :disabled="!passwordsMatch" style="background-color: black; color: white; padding: 1%; text-align: center; width: 150px;" @click="signup">Sign Up</v-btn>
       </v-card-actions>
       <v-card-subtitle class="text-center">
         <router-link to="/login">Already have an account? Login</router-link>
@@ -97,6 +97,12 @@ const signup = async () => {
     }, snackbarTimeout)
   }
 }
+
+const passwordsMatch = computed(() => {
+   if (password.value != '' && username.value != '' && location.value != '' && email.value !='' && full_name.value !='') {
+    return true
+   }
+})
 </script>
 
 <style scoped>
