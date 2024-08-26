@@ -46,7 +46,7 @@
       </template>
 
     
-      <template v-slot:title> Readability: {{ entry.readability }} </template>
+      <template v-slot:title> <b>Readability: </b> {{ entry.readability }} </template>
 
       <template v-slot:append>
        
@@ -62,7 +62,10 @@
               <v-list-item-group v-if="journalEntries.length > 0">
                 <v-list-item>
                   <v-list-item-content>
+
+                    <p>
                     {{ entry.text }}
+                  </p>
                   </v-list-item-content>
                  
                 </v-list-item>
@@ -72,9 +75,7 @@
               </v-list-item>
             </v-list>
 
-           
-
-
+          
     </v-card-text>
     <v-divider></v-divider>
             <v-list-item class="px-6" height="88">
