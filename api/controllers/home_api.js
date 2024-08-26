@@ -1,15 +1,16 @@
-const {User}  = require("../models/user_models");
+const {User, Journal}  = require("../models/user_models");
 const jwt = require("jsonwebtoken");
 
 
 exports.home_api = async (req, res) => {
     try {
     const { access_token } = req.body
-    const {username} = req.body
 
       const decoded = jwt.decode(access_token);
       const userId = decoded.userId
       const user = await User.findById( userId )
+      const total_entries = (await Journal.find({userID:userId}))
+      console.log(total_entries.length, 'length')
 
   
       if (!user) {
@@ -22,6 +23,7 @@ exports.home_api = async (req, res) => {
         .json({ 
             "data": user, 
             'username': user.username,
+            'total_entries': total_entries.length,
 
           'message': 'Login Successfully'
           
