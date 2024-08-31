@@ -28,7 +28,9 @@
         {{ successMessage }}
       </v-snackbar>
     </v-row>
-
+    <div >
+      TODAY
+    </div>
     <v-row no-gutters class=" justify-center pt-10">
    
       <!-- Card to disply journal entries -->
@@ -101,6 +103,7 @@
  <script setup>
 import { ref, computed } from 'vue'
 import { useAuthStore } from '@/stores/auth'
+console.log(Date.UTC())
 
 const authStore = useAuthStore()
 
